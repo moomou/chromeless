@@ -19,11 +19,12 @@ export default class Queue {
   async end(): Promise<void> {
     this.lastWaitAll = this.waitAll()
     try {
-        await this.lastWaitAll
+      await this.lastWaitAll
     } catch (err) {
-        console.error(err);
+      console.error(err)
+      throw err
     } finally {
-        await this.chrome.close()
+      await this.chrome.close()
     }
   }
 
@@ -36,20 +37,12 @@ export default class Queue {
     // already change the pointer to lastWaitAll for the next .process() call
     // after the pointer is set, wait for the previous tasks
     // then wait for the own pointer (the new .lastWaitAll)
-    try {
-        if (this.lastWaitAll) {
-          const lastWaitAllTmp = this.lastWaitAll
-          this.lastWaitAll = this.waitAll()
-          await lastWaitAllTmp
-        } else {
-          this.lastWaitAll = this.waitAll()
-        }
-
-        await this.lastWaitAll
-    } catch (err) {
-        console.error(err);
+    if (this.lastWaitAll) {
+      await this.lastWaitAll
     }
 
+    this.lastWaitAll = this.waitAll()
+    await this.lastWaitAll
     return this.chrome.process<T>(command)
   }
 

@@ -22,7 +22,7 @@
     "scripts": {
         "ava": "tsc -d && nyc ava",
         "build": "npm run clean && tsc -d",
-        "clean": "true",
+        "clean": "rm -rf ./dist",
         "coverage": "npm run ava",
         "precommit": "lint-staged",
         "commitmsg": "commitlint -e $GIT_PARAMS",

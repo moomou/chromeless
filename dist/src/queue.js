@@ -60,7 +60,7 @@ var Queue = /** @class */ (function () {
                     case 3:
                         err_1 = _a.sent();
                         console.error(err_1);
-                        return [3 /*break*/, 6];
+                        throw err_1;
                     case 4: return [4 /*yield*/, this.chrome.close()];
                     case 5:
                         _a.sent();
@@ -75,30 +75,20 @@ var Queue = /** @class */ (function () {
     };
     Queue.prototype.process = function (command) {
         return __awaiter(this, void 0, void 0, function () {
-            var lastWaitAllTmp, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 5, , 6]);
                         if (!this.lastWaitAll) return [3 /*break*/, 2];
-                        lastWaitAllTmp = this.lastWaitAll;
-                        this.lastWaitAll = this.waitAll();
-                        return [4 /*yield*/, lastWaitAllTmp];
+                        return [4 /*yield*/, this.lastWaitAll];
                     case 1:
                         _a.sent();
-                        return [3 /*break*/, 3];
+                        _a.label = 2;
                     case 2:
                         this.lastWaitAll = this.waitAll();
-                        _a.label = 3;
-                    case 3: return [4 /*yield*/, this.lastWaitAll];
-                    case 4:
+                        return [4 /*yield*/, this.lastWaitAll];
+                    case 3:
                         _a.sent();
-                        return [3 /*break*/, 6];
-                    case 5:
-                        err_2 = _a.sent();
-                        console.error(err_2);
-                        return [3 /*break*/, 6];
-                    case 6: return [2 /*return*/, this.chrome.process(command)];
+                        return [2 /*return*/, this.chrome.process(command)];
                 }
             });
         });
