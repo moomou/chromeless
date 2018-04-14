@@ -45,27 +45,22 @@ var Queue = /** @class */ (function () {
     }
     Queue.prototype.end = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.lastWaitAll = this.waitAll();
                         _a.label = 1;
                     case 1:
-                        _a.trys.push([1, 3, 4, 6]);
+                        _a.trys.push([1, , 3, 5]);
                         return [4 /*yield*/, this.lastWaitAll];
                     case 2:
                         _a.sent();
-                        return [3 /*break*/, 6];
-                    case 3:
-                        err_1 = _a.sent();
-                        console.error(err_1);
-                        throw err_1;
-                    case 4: return [4 /*yield*/, this.chrome.close()];
-                    case 5:
+                        return [3 /*break*/, 5];
+                    case 3: return [4 /*yield*/, this.chrome.close()];
+                    case 4:
                         _a.sent();
                         return [7 /*endfinally*/];
-                    case 6: return [2 /*return*/];
+                    case 5: return [2 /*return*/];
                 }
             });
         });

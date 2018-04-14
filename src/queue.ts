@@ -20,9 +20,6 @@ export default class Queue {
     this.lastWaitAll = this.waitAll()
     try {
       await this.lastWaitAll
-    } catch (err) {
-      console.error(err)
-      throw err
     } finally {
       await this.chrome.close()
     }
